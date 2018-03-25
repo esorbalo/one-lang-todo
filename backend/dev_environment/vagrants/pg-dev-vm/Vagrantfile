@@ -1,0 +1,43 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+$script = <<SCRIPT
+echo I am provisioning...
+date > /etc/vagrant_provisioned_at
+SCRIPT
+
+node_name = "postgres-vm"
+
+Vagrant.configure("2") do |config|
+  config.vm.provision "shell", inline: $script
+
+  config.vm.define node_name do |node_config|
+
+    node_config.vm.box = "ubuntu/trusty64"
+    node_config.vm.box_url = "https://atlas.hashicorp.com/ubuntu/boxes/trusty64"
+    node_config.vm.host_name = node_name
+
+    # Share this folder
+    node_config.vm.synced_folder ".", "/mnt/bootstrap",
+      create: true,
+      id: "bootstrap",
+      owner: "vagrant",
+      group: "vagrant"
+
+    # Share the DB schemas folder
+    node_config.vm.synced_folder "../../../model/src/db", "/mnt/schemas",
+      create: true,
+      id: "schemas",
+      owner: "vagrant",
+      group: "vagrant"
+
+    node_config.vm.provision :shell, :path => "Vagrant-setup/bootstrap.sh"
+
+    # PostgreSQL Server port forwarding
+    node_config.vm.network "forwarded_port", guest: 5432, host: 15432
+
+    node_config.vm.provider :virtualbox do |v|
+      v.name = node_name
+    end
+  end
+end

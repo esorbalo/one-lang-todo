@@ -1,0 +1,27 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "amd": true,
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "comma-dangle": ["error", "only-multiline"],
+    "global-strict": 0,
+    "indent": ["warn", 2, {"SwitchCase": 1}],
+    "no-extra-semi": 1,
+    "no-undef": 1,
+    "no-underscore-dangle": 0,
+    "no-console": 0,
+    "no-unused-vars": 0,
+    "no-trailing-spaces": [1, { "skipBlankLines": true }],
+    "no-unreachable": 1,
+    "no-alert": 0,
+    "quotes": [ 1, "single" ],
+    "semi": ["error", "always"]
+  }
+}

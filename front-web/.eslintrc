@@ -1,0 +1,52 @@
+// Use this file as a starting point for your project's .eslintrc.
+// Copy this file, and add rule overrides as needed.
+{
+  "parser": "babel-eslint",
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true,
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jquery": true
+  },
+  "extends": "airbnb",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    'arrow-body-style': 'off',
+    'class-methods-use-this': 'off',
+    'comma-dangle': 'off',  // TODO Remove first priority
+    'consistent-return': 'off',
+    'no-alert': 'off',  // TODO Remove first priority
+    'no-console': 'off',
+    'no-param-reassign': 'off',
+    'no-undef': 'off',
+    'no-underscore-dangle': 'off',
+    'no-unused-vars': 'off',
+    'prefer-const': 'off',  // It's ok to use 'let' in development.
+    'prefer-template': 'off',
+
+    'jsx-a11y/href-no-hash': 'off',
+    'jsx-a11y/img-has-alt': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+
+    'import/extensions': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'import/no-unresolved': 'off',
+    'import/prefer-default-export': 'off',
+
+    'react/jsx-first-prop-new-line': 'off',
+    'react/jsx-first-prop-new-lines': 'off',
+    'react/forbid-prop-types': 'off',
+    'react/no-string-refs': 'off',
+    'react/prop-types': 'off',
+    'react/prefer-stateless-function': 'off',
+    'react/require-default-props': 'off',
+  }
+}
