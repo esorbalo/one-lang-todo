@@ -11,7 +11,6 @@ module.exports = function() {
 
   const logger          = require('../../service').logger;
   const config          = require('../../service').config;
-  const passportconfig  = require('./auth/passportconfig');
   const routesApi       = require('./api-v1');
   const errors          = require('./api-v1/errors.js');
   const expressLogger   = require('./utils').expressLogger;

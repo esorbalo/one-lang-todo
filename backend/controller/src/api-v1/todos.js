@@ -1,7 +1,7 @@
 'use strict';
 const router = require('express').Router({mergeParams: true});
 
-const todoService = require('../../../service').service.todo;
+const todoService = require('../../../service').service.todos;
 const config = require('../../../service').config;
 const logger = require('../../../service').logger;
 const errors = require('./errors.js');
@@ -9,7 +9,7 @@ const errors = require('./errors.js');
 //INDEX - show all user's items
 router.get('/', (req, res) => {
   logger.debug('Get all todos of user:', req.params.userId);
-  todoService.todos.getIndex(req.params.userId)
+  todoService.getIndex(req.params.userId)
     .then(allItems => {
       logger.debug('allItems:');
       logger.debug(allItems);
@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
   let uploadedItem = Object.assign({}, req.body, {});
   logger.debug('Posted item: ', uploadedItem);
 
-  return todoService.todos.create(req.params.userId, req.body.text)
+  return todoService.create(req.params.userId, req.body.text)
     .then(newlyCreated => {
       logger.info('Newly created item: ', newlyCreated);
 
@@ -42,7 +42,7 @@ router.post('/:itemId', (req, res) => {
     text: req.body.text,
   };
 
-  return todoService.todos.update(todo)
+  return todoService.update(todo)
     .then(updatedTodo => {
       logger.info('Updated item: ', updatedTodo);
       res.json(updatedTodo);
@@ -58,7 +58,7 @@ router.post('/:itemId/completed', (req, res) => {
     completed: req.body.completed,
   };
 
-  return todoService.todos.toggleCompleted(todo)
+  return todoService.toggleCompleted(todo)
     .then(updatedTodo => {
       logger.info('Updated item: ', updatedTodo);
       res.json(updatedTodo);
@@ -69,7 +69,7 @@ router.post('/:itemId/completed', (req, res) => {
 router.delete('/:item_id', function(req, res) {
 
   logger.debug('Request to delete itemId ' + req.params.todo_id);
-  todoService.todos.remove(req.params.item_id)
+  todoService.remove(req.params.item_id)
     .then(updatedItem => {
       res.json({
         status: 'success',
