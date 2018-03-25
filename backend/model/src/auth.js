@@ -2,26 +2,6 @@
 var logger      = require('./utils/logger');
 var User        = require('./models-pg/user');
 
-// ---------------------------------
-// Another example (with meta_data):
-// { email_verified: false,
-//   email: 'posta.reduceri+6@gmail.com',
-//   clientID: 'vJMma8pJ92NFYnt9VgUgdrZHLHhncmR3',
-//   user_metadata: { firstname: 'Some', lastname: 'Thing', middlename: '' },
-//   updated_at: '2016-12-29T10:55:52.937Z',
-//   name: 'posta.reduceri+6@gmail.com',
-//   picture: 'https://s.gravatar.com/avatar/41735af7556b68c2ba844d96d694264f?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fpo.png',
-//   user_id: 'auth0|58644c658667e7378feba812',
-//   nickname: 'posta.reduceri+6',
-//   identities:
-//    [ { user_id: '58644c658667e7378feba812',
-//        provider: 'auth0',
-//        connection: 'Username-Password-Authentication',
-//        isSocial: false } ],
-//   created_at: '2016-12-28T23:36:05.790Z',
-//   global_client_id: 'bDZZW5GcXOtCRL9W9WB7kxn0QyahFUCu' }
-// ---------------------------------
-
 /**
  * Creates our User entity based on the information provided by Auth0
  * during serialization.
