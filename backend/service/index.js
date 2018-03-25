@@ -3,7 +3,7 @@
 const src = require('./src');
 
 module.exports = {
-  api: src.api,
+  service: src.service,
   config: src.config,
   logger: src.logger,
 };

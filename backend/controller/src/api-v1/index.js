@@ -1,7 +1,7 @@
 'use strict';
 const router = require('express').Router();
 
-const logger = require('../../../model').logger;
+const logger = require('../../../service').logger;
 const authCheck = require('../auth/auth-check');
 const accessRights = require('../middleware').accessRights;
 

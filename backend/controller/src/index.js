@@ -3,20 +3,21 @@
 module.exports = function() {
 
   const express         = require('express');
-  const app             = express();
   const validator       = require('express-validator');
   const bodyParser      = require('body-parser');
   const methodOverride  = require('method-override');
   const path            = require('path');
+  const cors            = require('cors');
 
-  const logger          = require('../../model').logger;
-  const config          = require('../../model').config;
+  const logger          = require('../../service').logger;
+  const config          = require('../../service').config;
   const passportconfig  = require('./auth/passportconfig');
   const routesApi       = require('./api-v1');
   const errors          = require('./api-v1/errors.js');
   const expressLogger   = require('./utils').expressLogger;
-
+  
   logger.info('PORT: ' + config.port);
+  const app = express();
   app.set('port', config.port);
   app.set('ip', config.ip);
 
@@ -28,7 +29,7 @@ module.exports = function() {
   logger.info('Dirname: ' + __dirname);
   app.use(methodOverride('_method'));
 
-  passportconfig(app);
+  app.use(cors());
 
   app.use(function(req, res, next){
     res.locals.currentUser = req.user;

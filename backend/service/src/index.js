@@ -6,7 +6,7 @@ const logger = require('./utils/logger');
 const todos = require('./todos');
 
 module.exports = {
-  api: {
+  service: {
     auth,
     todos,
   },

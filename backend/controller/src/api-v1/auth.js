@@ -3,9 +3,9 @@ const router      = require('express').Router({mergeParams: true});
 const VError      = require('verror');
 const util        = require('util');
 
-const logger      = require('../../../model').logger;
-const config      = require('../../../model').config;
-const authApi     = require('../../../model').api.auth;
+const logger      = require('../../../service').logger;
+const config      = require('../../../service').config;
+const authApi     = require('../../../service').service.auth;
 const authCheck   = require('../auth/auth-check');
 const AuthenticationUtil = require('../auth/authentication-util');
 const getAuthenticatedUser = require('../middleware').accessRights.getAuthenticatedUser;

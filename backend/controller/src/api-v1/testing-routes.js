@@ -1,8 +1,8 @@
 'use strict';
 const router        = require('express').Router({mergeParams: true});
 
-const config        = require('../../../model').config;
-const logger        = require('../../../model').logger;
+const config        = require('../../../service').config;
+const logger        = require('../../../service').logger;
 const errors        = require('./errors.js');
 
 const testObj = [

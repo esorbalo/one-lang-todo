@@ -3,8 +3,8 @@ const AuthenticationClient = require('auth0').AuthenticationClient;
 const axios = require('axios');
 const VError = require('verror');
 
-const config = require('../../../model').config;
-const logger = require('../../../model').logger;
+const config = require('../../../service').config;
+const logger = require('../../../service').logger;
 
 function AuthenticationUtil(config, serializeUserFunc) {
   this.auth0 = new AuthenticationClient({

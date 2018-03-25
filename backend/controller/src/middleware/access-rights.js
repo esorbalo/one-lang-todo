@@ -1,15 +1,15 @@
 'use strict';
 const VError = require('verror');
 
-const logger      = require('../../../model').logger;
-const authApi     = require('../../../model').api.auth;
-const modelApi   = require('../../../model').api;
-const errors      = require('../api-v1/errors');
+const logger = require('../../../service').logger;
+const authService = require('../../../service').service.auth;
+const todoService = require('../../../service').service.todos;
+const errors = require('../api-v1/errors');
 
 function getAuthenticatedUser(req, res, next) {
   logger.info('Authenticated user: ', req.user);
 
-  authApi.deserializeUserByTokenSub(req.user.sub)
+  authService.deserializeUserByTokenSub(req.user.sub)
     .then(function(foundUser){
       logger.info('Found user:', foundUser);
       res.locals.user = foundUser;
@@ -31,7 +31,7 @@ function mayAccessUser(req, res, next) {
 }
 
 function mayAccessTodo(req, res, next) {
-  modelApi.todos.hasUserAccessToTodo(res.locals.user.id, req.params.todo_id)
+  todoService.hasUserAccessToTodo(res.locals.user.id, req.params.todo_id)
     .then((may) => {
       if (may) return next();
       return res.status(403).json(errors.errorJson(errors.consts.UNAUTHORIZED_ACCESS));

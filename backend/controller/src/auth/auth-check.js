@@ -1,7 +1,8 @@
 'use strict';
-const config = require('../../../model').config;
 const jwt = require('express-jwt');
-const logger = require('../../../model').logger;
+
+const config = require('../../../service').config;
+const logger = require('../../../service').logger;
 
 logger.info('Auth0 client ID: ', config.auth0.clientID);
 
