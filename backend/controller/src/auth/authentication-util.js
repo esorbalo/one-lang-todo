@@ -68,7 +68,7 @@ AuthenticationUtil.prototype.signup = function(userData) {
   userData.connection = 'Username-Password-Authentication';
   userData.scope = 'openid';
   userData.grant_type = 'password';
-  userData.audience = 'https://todos-local.eu.auth0.com/api/v2/';
+  userData.audience = `https://${config.auth0.domain}/api/v2/`;
   logger.debug('AuthenticationUtil.prototype.signup', userData);
   // First Sign-up, the Sign-in and then we have the token to do the
   // previous register user.
