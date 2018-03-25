@@ -19,7 +19,6 @@ AuthenticationUtil.prototype.signupLocalDb = function(userInfo, cb) {
     process.nextTick(() => {
 
       logger.debug('Request to register userInfo: ', userInfo);
-      // authApi.auth0serializeUser(userInfo)
       return this.serializeUserFunc(userInfo)
         .then(function(serializedUser){
           if (cb) {cb(null, serializedUser);}
@@ -41,8 +40,11 @@ AuthenticationUtil.prototype.signupBasedOnJwt = function(jwtToken, cb) {
   return new Promise((resolve, reject) => {
     process.nextTick(() => {
 
+      logger.debug('signupBasedOnJwt: jwtToken=', jwtToken);
       return this.getUserInfoUsingJwt(jwtToken)
         .then(userInfo => {
+          logger.debug('signupBasedOnJwt: userInfo=', userInfo);
+          if (!userInfo) return reject('userInfo is null');
           if (cb) {return this.signupLocalDb(userInfo, cb);}
           return this.signupLocalDb(userInfo);
         })
@@ -61,7 +63,7 @@ AuthenticationUtil.prototype.signupBasedOnJwt = function(jwtToken, cb) {
 
 AuthenticationUtil.prototype.getUserInfoUsingJwt = function(jwtToken) {
 
-  return this.auth0.tokens.getInfo(jwtToken);
+  return this.auth0.users.getInfo(jwtToken);
 };
 
 AuthenticationUtil.prototype.signup = function(userData) {

@@ -11,7 +11,7 @@
   "license": "MIT",
   "private": false,
   "engines": {
-    "node": "~6.9.3"
+    "node": ">=6"
   },
   "scripts": {
     "test": "./scripts/test.sh test/",
@@ -19,7 +19,7 @@
     "debug": "LOGLEVELCONSOLE=debug node index.js"
   },
   "dependencies": {
-    "auth0": "^2.7.0",
+    "auth0": "^2.9.1",
     "axios": "^0.16.2",
     "bcrypt": "^1.0.2",
     "body-parser": "~1.14.2",

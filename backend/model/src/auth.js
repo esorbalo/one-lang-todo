@@ -8,9 +8,11 @@ var User        = require('./models-pg/user');
  */
 function extractUserFromAuth0User(auth0user) {
   logger.debug('Auth0 user: ', auth0user);
+  if (!auth0user) throw new Error('auth0user is null');
+  if (!auth0user.sub) throw new Error('auth0user.sub (id of user) is null');
 
   let userObj = {
-    [User.prototype.auth0idAttr]: auth0user.user_id,
+    [User.prototype.auth0idAttr]: auth0user.sub,
     [User.prototype.providerAttr]: 'auth0',  //TODO change: part of list of identities
     [User.prototype.pictureAttr]: auth0user.picture,
     [User.prototype.auth0nicknameAttr]: auth0user.nickname,

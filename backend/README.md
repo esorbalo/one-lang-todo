@@ -26,8 +26,21 @@ Make sure that you have the following applications installed:
 ### Auth0
 
 1. Signup for the free account on [auth0.com](https://auth0.com).
-1. Choose database authentication.
-1. Note client id and client secret.
+1. in Auth0.com, go to _Clients_ -> _Default App_.
+1. Save _Domain_, _Client ID_ and _Client Secret_. We will set them in environmental variables later.
+1. Allow grant types:
+   1. In the _Default App_ client, go down and click on _Show Advanced Settings_.
+   1. Go to _Grant Types_ tab.
+   1. Click on _Password_ and click on _Save changes_.
+   1. Go to _OAuth_ tab.
+   1. Uncheck _OIDC Conformant_.
+   1. In the _JsonWebToken Signature Algorithm_ drop-down menu select _HS256_.
+1. In the _Connections_ tab make sure that only _Username-Password-Authentication_ is chosen.
+1. Set default connection:
+   1. Go to the right left corner and click on the account name. A menu opens
+   1. Click on _Settings_
+   1. In the _Default Directory_ field write: "Username-Password-Authentication".
+   1. Click on _Save_.
 
 ### Local PostgreSQL database
 
@@ -35,13 +48,6 @@ Assuming that you do not have local PostgreSQL database, then:
 1. After cloning this repository go to folder [dev_environment/vagrants/pg-dev-vm](dev_environment/vagrants/pg-dev-vm)
 1. Run `vagrant up`
 1. Wait for the virtual machine to start and create the application database (without tables). The path to the database will be shown at the end by this script: [dev_environment/vagrants/pg-dev-vm/Vagrant-setup/bootstrap.sh](dev_environment/vagrants/pg-dev-vm/Vagrant-setup/bootstrap.sh).
-1. When it has finished, you'll need to *create tables*:
-   1. Login into the database. If you installed Postgresql using Vagrant, follow the steps:
-      1. Ssh into the virtual machine: `vagrant ssh`
-      1. From the virtual machine login into the database: `PGUSER=myapp PGPASSWORD=dbpass psql -h localhost one_lang_todo`
-   1. Open the database schema: [model/src/db/db_create.sql](model/src/db/db_create.sql). Copy the content in clipboard.
-   1. Paste the content into the terminal with open postgres database. 
-   1. Check that tables were successfully created: `\dt`
 
 ### Environmental variables
 
@@ -60,3 +66,24 @@ You can see the required environmental variables in [model/src/config/index.js](
 1. Cd into the _backend_ folder.
 1. Install dependencies: `npm install`.
 1. Start the server: `npm start`
+1. Check the endpoint [http://localhost:8080/api/v1/test/todos](http://localhost:8080/api/v1/test/todos), which does not require any authentication. You should get two dummy to dos. 
+
+### Test signup
+
+A real test for the server is the _Sign Up_ operation, because it requires both Auth0 service and the database. To sign up a user, send POST request using Postman to: [http://localhost:8080/api/v1/auth/signup](http://localhost:8080/api/v1/auth/signup) with header
+
+
+`Content-Type: application/json`
+
+and the body:
+
+```json
+{
+  "email": "email@example.com",
+  "password": "Password",
+  "firstname": "firstname",
+  "lastname": "lastname"
+}
+```
+
+The request should be successful with any email. 

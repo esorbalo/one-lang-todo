@@ -20,7 +20,6 @@ class Auth0Info {
   constructor() {
     this.auth0Domain = config.auth0.domain;
     this.auth0ClientID = config.auth0.clientID;
-    this.auth0Callback = config.auth0.callbackURL;
   }
 }
 
@@ -95,7 +94,7 @@ function signup(userData) {
         // signedInUser.id_token  -- has the jwtToken
         logger.debug('Signed in user:', response.data);
         localUserInfo = response.data;
-        return authUtil.signupBasedOnJwt(localUserInfo.id_token);
+        return authUtil.signupBasedOnJwt(localUserInfo.access_token);
       })
       .then(userInfo => {
         logger.debug('Registered userInfo', userInfo);
@@ -104,6 +103,10 @@ function signup(userData) {
         resolve(userInfo);
       })
       .catch(err => {
+        if (err && err.response) {
+          logger.error('err.response:');
+          logger.error(err.response.data);
+        };
         const newErr = new VError(err, 'signup: could not signup');
         logger.error(VError.fullStack(newErr));
         logger.error('Message:', err.message);
