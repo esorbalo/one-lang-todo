@@ -1,10 +1,26 @@
 # One-Lang Todo Application
 
-Boilerplate code to create Backend + Web + Mobile applications entirely on JavaScript. This is a spin-off from a private project. It covers:
+Boilerplate code to create Backend + Web + Mobile applications entirely on JavaScript. Quick to setup and deploy. Ready to be used in hackatons, proof of concepts or early startups. 
+
+
+It covers:
 
 * Backend - Postgresql, Authentication through Auth0, ready to be deployed on Heroku
-* Web - React, Bootstrap, Authentication
+* Web - React, Bootstrap 3, Authentication
 * Mobile - React-Native, Expo, Native-Base, React-Navigation, Authentication
+
+This is a spin-off from a private project. 
+
+## Local setup
+
+Each project explains the setup of local environment. Do it in the following order:
+
+1. [backend](backend) - make sure that it starts without any errors.
+2. [front-web](front-web) - make sure that the website loads and that it connects to the locally running backend.
+3. [front-mobile](front-mobile) - make sure that it runs in the simulator and connects to the locallly running backend.
+
+## Deployment
+
 
 ## License
 
