@@ -16,17 +16,6 @@ const authUtil = new AuthenticationUtil(config.auth0, authApi.auth0serializeUser
 const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 const PASSWORD_PATTERN = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
 
-class Auth0Info {
-  constructor() {
-    this.auth0Domain = config.auth0.domain;
-    this.auth0ClientID = config.auth0.clientID;
-  }
-}
-
-router.get('/auth0info', (req, res) => {
-  res.json(new Auth0Info());
-});
-
 /**
 * Get JWT Token from request.
 */
