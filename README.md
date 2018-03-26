@@ -1,15 +1,25 @@
 # One-Lang Todo Application
 
-Boilerplate code to create Backend + Web + Mobile applications entirely on JavaScript. Quick to setup and deploy. Ready to be used in hackatons, proof of concepts or early startups. 
+Unopionated boilerplate code to create Backend + Web + Mobile applications entirely on JavaScript. Quick to setup and deploy. Ready to be used in hackatons, proof of concepts or early startups. 
 
 
 It covers:
 
-* Backend - Postgresql, Authentication through Auth0, ready to be deployed on Heroku
-* Web - React, Bootstrap 3, Authentication
-* Mobile - React-Native, Expo, Native-Base, React-Navigation, Authentication
+* Backend - Postgresql, Authentication through Auth0, logging, ready to be deployed on Heroku
+* Web - React, Bootstrap 3, SCSS, Redux, Authentication, ESLint
+* Mobile - React-Native, Expo, Native-Base, React-Navigation, Redux, Authentication, ESLint
 
 This is a spin-off from a private project. 
+
+## Philosophy
+
+The project aims to shorten the idea-to-market time. It should not take more than one hour to have a todo application running locally (backend + web in chrome + mobile in simulator). And at most one more hour to have the backend + web deployed on Heroku and mobile published to Expo. That's all. In a blink of an eye you are ready to send links to a web page and mobile apps to your friends or potential customers. 
+
+The code is highly customizable and simple. The project is implemented using the popular layer architecture: each layer can be easily replaced without affecting much the other layers. For example, backend can be replaced with Spring Boot or with Firebase without affecting web and mobile. Mobile can be replaced with Swift and Kotlin without affecting backend and web. 
+
+## Architecture
+
+
 
 ## Local setup
 
