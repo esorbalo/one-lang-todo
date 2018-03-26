@@ -19,7 +19,9 @@ The code is highly customizable and simple. The project is implemented using the
 
 ## Architecture
 
+![architecture](docs/architecture.png)
 
+Backend provides same API for both web and mobile. The authentication is done using [JSON Web Tokens](https://en.wikipedia.org/wiki/JSON_Web_Token).
 
 ## Local setup
 
