@@ -4,6 +4,8 @@
 
 ### Dependencies
 
+_(Setup instructions for dependencies are explained below)_
+
 * PostgreSQL database
 * Auth0 authentication
 * Environmental variables
@@ -63,7 +65,7 @@ You can see the required environmental variables in [model/src/config/index.js](
 
 ### Start the server
 
-1. Cd into the _backend_ folder.
+1. Cd into the _backend_ folder .
 1. Install dependencies: `npm install`.
 1. Start the server: `npm start`
 1. Check the endpoint [http://localhost:8080/api/v1/test/todos](http://localhost:8080/api/v1/test/todos), which does not require any authentication. You should get two dummy to dos. 
